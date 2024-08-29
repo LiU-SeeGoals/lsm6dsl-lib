@@ -118,11 +118,11 @@ void lsm6dsl_fifo_set_decimation(Lsm6dsl_Device_t *device,
 int32_t lsm6dsl_fifo_read_to_end(Lsm6dsl_Device_t *device, Lsm6dsl_Data_t *databuf, uint16_t nmemb);
 void lsm6dsl_fifo_read_if_watermark(Lsm6dsl_Device_t *device, Lsm6dsl_Data_t *inbuf, uint16_t size);
 
-void lsm6dsl_fifo_set_threshold(Lsm6dsl_Device_t *device, uint16_t threshold);
+void lsm6dsl_fifo_set_threshold(Lsm6dsl_Device_t *device, uint16_t threshold); // TODO: Implement
 
 
-void Lsm6dsl_config_int1(Lsm6dsl_Device_t *device, uint8_t flags);
-void Lsm6dsl_config_int2(Lsm6dsl_Device_t *device, uint8_t flags);
+void lsm6dsl_config_int1(Lsm6dsl_Device_t *device, uint8_t flags); // TODO: Implement
+void lsm6dsl_config_int2(Lsm6dsl_Device_t *device, uint8_t flags); // TODO: Implement
 
 
 #ifdef __cplusplus
