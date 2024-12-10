@@ -12,30 +12,6 @@ void lsm6dsl_i2c_master_init(Lsm6dsl_I2cPortHandle_t *port_handle)
     Wire.begin();
 }
 
-
-void lsm6dsl_i2c_master_transmit(Lsm6dsl_I2cPortHandle_t *port_handle,
-                                 uint8_t device_address, uint8_t *outbuf, uint8_t size)
-{
-    Wire.beginTransmission(device_address); // Start condition
-    
-    Wire.write(outbuf, size);
-    
-    Wire.endTransmission(true);             // Stop condition
-}
-
-
-void lsm6dsl_i2c_master_receive(Lsm6dsl_I2cPortHandle_t *port_handle,
-                                uint8_t device_address, uint8_t *inbuf, uint8_t size)
-{
-    Wire.beginTransmission(device_address); // Start condition
-    
-    uint32_t bytes_received = Wire.requestFrom(device_address, size);
-    Wire.readBytes(inbuf, bytes_received > size ? size : bytes_received);
-    
-    Wire.endTransmission(true);             // Stop condition
-}
-
-
 void lsm6dsl_i2c_master_transmit_first_frame(Lsm6dsl_I2cPortHandle_t *port_handle,
                                              uint8_t device_address, uint8_t *outbuf, uint8_t size)
 {

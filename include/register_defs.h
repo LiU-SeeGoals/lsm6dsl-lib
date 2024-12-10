@@ -326,49 +326,49 @@ typedef enum
  * bool BW0_XL            Analog chain bandwidth selection
  ******************************************************************************/
 
-#define LSM6DSL_MASK_ODR_XL      0b11110000
+#define LSM6DSL_MASK_ODR_XL     0b11110000
 
 /* In high performance mode (XL_HM_MODE = 0) */
 typedef enum
 {
-    Lsm6dsl_OdrXlHp_PowerDown  = 0b00000000,
-    Lsm6dsl_OdrXlHp_12_5Hz     = 0b00010000,
-    Lsm6dsl_OdrXlHp_26Hz       = 0b00100000,
-    Lsm6dsl_OdrXlHp_52Hz       = 0b00110000,
-    Lsm6dsl_OdrXlHp_104Hz      = 0b01000000,
-    Lsm6dsl_OdrXlHp_208Hz      = 0b01010000,
-    Lsm6dsl_OdrXlHp_416Hz      = 0b01100000,
-    Lsm6dsl_OdrXlHp_833Hz      = 0b01110000,
-    Lsm6dsl_OdrXlHp_1_66kHz    = 0b10000000,
-    Lsm6dsl_OdrXlHp_3_33kHz    = 0b10010000,
-    Lsm6dsl_OdrXlHp_6_66kHz    = 0b10100000,
+    Lsm6dsl_OdrXlHp_PowerDown = 0b00000000,
+    Lsm6dsl_OdrXlHp_12_5Hz    = 0b00010000,
+    Lsm6dsl_OdrXlHp_26Hz      = 0b00100000,
+    Lsm6dsl_OdrXlHp_52Hz      = 0b00110000,
+    Lsm6dsl_OdrXlHp_104Hz     = 0b01000000,
+    Lsm6dsl_OdrXlHp_208Hz     = 0b01010000,
+    Lsm6dsl_OdrXlHp_416Hz     = 0b01100000,
+    Lsm6dsl_OdrXlHp_833Hz     = 0b01110000,
+    Lsm6dsl_OdrXlHp_1_66kHz   = 0b10000000,
+    Lsm6dsl_OdrXlHp_3_33kHz   = 0b10010000,
+    Lsm6dsl_OdrXlHp_6_66kHz   = 0b10100000,
 } Lsm6dsl_OdrXlHp_e;
 
 /* In normal or low power mode (XL_HM_MODE = 1) */
 typedef enum
 {
-    Lsm6dsl_OdrXl_PowerDown    = 0b00000000,
-    Lsm6dsl_OdrXl_1_6Hz        = 0b10110000,
-    Lsm6dsl_OdrXl_12_5Hz       = 0b00010000,
-    Lsm6dsl_OdrXl_26Hz         = 0b00100000,
-    Lsm6dsl_OdrXl_52Hz         = 0b00110000,
-    Lsm6dsl_OdrXl_104Hz        = 0b01000000,
-    Lsm6dsl_OdrXl_208Hz        = 0b01010000,
-    Lsm6dsl_OdrXl_416Hz        = 0b01100000,
-    Lsm6dsl_OdrXl_833Hz        = 0b01110000,
-    Lsm6dsl_OdrXl_1_66kHz      = 0b10000000,
-    Lsm6dsl_OdrXl_3_33kHz      = 0b10010000,
-    Lsm6dsl_OdrXl_6_66kHz      = 0b10100000,
+    Lsm6dsl_OdrXl_PowerDown   = 0b00000000,
+    Lsm6dsl_OdrXl_1_6Hz       = 0b10110000,
+    Lsm6dsl_OdrXl_12_5Hz      = 0b00010000,
+    Lsm6dsl_OdrXl_26Hz        = 0b00100000,
+    Lsm6dsl_OdrXl_52Hz        = 0b00110000,
+    Lsm6dsl_OdrXl_104Hz       = 0b01000000,
+    Lsm6dsl_OdrXl_208Hz       = 0b01010000,
+    Lsm6dsl_OdrXl_416Hz       = 0b01100000,
+    Lsm6dsl_OdrXl_833Hz       = 0b01110000,
+    Lsm6dsl_OdrXl_1_66kHz     = 0b10000000,
+    Lsm6dsl_OdrXl_3_33kHz     = 0b10010000,
+    Lsm6dsl_OdrXl_6_66kHz     = 0b10100000,
 } Lsm6dsl_OdrXl_e;
 
 
-#define LSM6DSL_MASK_FS_XL       0b00001100
+#define LSM6DSL_MASK_FS_XL      0b00001100
 typedef enum {
-    Lsm6dsl_FsXl_2g            = 0b00000000, 
-    Lsm6dsl_FsXl_16g           = 0b00000100, 
-    Lsm6dsl_FsXl_4g            = 0b00001000, 
-    Lsm6dsl_FsXl_8g            = 0b00001100, 
-} Lsm6dsl_FsXl_e;
+    Lsm6dsl_FullScaleXl_2g    = 0b00000000,
+    Lsm6dsl_FullScaleXl_16g   = 0b00000100,
+    Lsm6dsl_FullScaleXl_4g    = 0b00001000,
+    Lsm6dsl_FullScaleXl_8g    = 0b00001100,
+} Lsm6dsl_FullScaleXl_e;
 
 
 #define LSM6DSL_MASK_LPF1_BW_SEL 0b00000010
@@ -388,33 +388,34 @@ typedef enum {
 /* Same values whether in high performance mode (G_HM_MODE = 0)
  * or low power mode (G_HM_MODE = 1) */
 
-#define LSM6DSL_MASK_ODR_G      0b11110000
+#define LSM6DSL_MASK_ODR_G          0b11110000
 typedef enum
 {
-    Lsm6dsl_OdrGyro_PowerDown = 0b00000000,
-    Lsm6dsl_OdrGyro_12_5Hz    = 0b00010000,
-    Lsm6dsl_OdrGyro_26Hz      = 0b00100000,
-    Lsm6dsl_OdrGyro_52Hz      = 0b00110000,
-    Lsm6dsl_OdrGyro_104Hz     = 0b01000000,
-    Lsm6dsl_OdrGyro_208Hz     = 0b01010000,
-    Lsm6dsl_OdrGyro_416Hz     = 0b01100000,
-    Lsm6dsl_OdrGyro_833Hz     = 0b01110000,
-    Lsm6dsl_OdrGyro_1_66kHz    = 0b10000000,
-    Lsm6dsl_OdrGyro_3_33kHz   = 0b10010000,
-    Lsm6dsl_OdrGyro_6_66kHz   = 0b10100000,
+    Lsm6dsl_OdrGyro_PowerDown     = 0b00000000,
+    Lsm6dsl_OdrGyro_12_5Hz        = 0b00010000,
+    Lsm6dsl_OdrGyro_26Hz          = 0b00100000,
+    Lsm6dsl_OdrGyro_52Hz          = 0b00110000,
+    Lsm6dsl_OdrGyro_104Hz         = 0b01000000,
+    Lsm6dsl_OdrGyro_208Hz         = 0b01010000,
+    Lsm6dsl_OdrGyro_416Hz         = 0b01100000,
+    Lsm6dsl_OdrGyro_833Hz         = 0b01110000,
+    Lsm6dsl_OdrGyro_1_66kHz       = 0b10000000,
+    Lsm6dsl_OdrGyro_3_33kHz       = 0b10010000,
+    Lsm6dsl_OdrGyro_6_66kHz       = 0b10100000,
 } Lsm6dsl_OdrGyro_e;
 
 
-#define LSM6DSL_MASK_FS_G       0b00001100
+#define LSM6DSL_MASK_FS_G           0b00001100
+#define LSM6DSL_MASK_FS_125         0b00000010
 typedef enum {
-    Lsm6dsl_Fs125_250dps      = 0b00000000, 
-    Lsm6dsl_Fs125_500dps      = 0b00000100, 
-    Lsm6dsl_Fs125_1000dps     = 0b00001000, 
-    Lsm6dsl_Fs125_2000dps     = 0b00001100, 
-} Lsm6dsl_Fs125_e;
+    Lsm6dsl_FullScaleGyro_125dps  = 0b00000010,
+    Lsm6dsl_FullScaleGyro_250dps  = 0b00000000,
+    Lsm6dsl_FullScaleGyro_500dps  = 0b00000100,
+    Lsm6dsl_FullScaleGyro_1000dps = 0b00001000,
+    Lsm6dsl_FullScaleGyro_2000dps = 0b00001100,
+} Lsm6dsl_FullScaleGyro_e;
 
 
-#define LSM6DSL_MASK_FS_125     0b00000010
 
 
 /******************************************************************************/

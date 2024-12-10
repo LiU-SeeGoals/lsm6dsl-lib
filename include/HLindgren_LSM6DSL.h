@@ -98,10 +98,13 @@ typedef enum
 
 
 void lsm6dsl_accel_init(Lsm6dsl_Device_t   *device,
-                        Lsm6dsl_DataRate_e accel_data_rate);
+                        Lsm6dsl_DataRate_e accel_data_rate,
+                        Lsm6dsl_FullScaleXl_e full_scale);
 
 void lsm6dsl_gyro_init(Lsm6dsl_Device_t   *device,
-                       Lsm6dsl_DataRate_e gyro_data_rate);
+                       Lsm6dsl_DataRate_e gyro_data_rate,
+                       Lsm6dsl_FullScaleGyro_e full_scale);
+
 
 Lsm6dsl_GyroData_t  lsm6dsl_gyro_read(Lsm6dsl_Device_t *device);
 Lsm6dsl_AccelData_t lsm6dsl_accel_read(Lsm6dsl_Device_t *device);
