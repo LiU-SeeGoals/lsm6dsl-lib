@@ -11,15 +11,25 @@ void lsm6dsl_open_i2c_slave_device(Lsm6dsl_I2cPortHandle_t *port_handle, uint8_t
 }
 
 
+void lsm6dsl_open_spi_slave_device(Lsm6dsl_SpiPortHandle_t *port_handle, 
+                                   Lsm6dsl_Device_t *device)
+{
+    lsm6dsl_spi_master_init(port_handle);
+    device->port_handle    = port_handle;
+}
+
+
 void lsm6dsl_read_register(Lsm6dsl_Device_t *device, uint8_t reg_address,
                            uint8_t *inbuf, uint8_t size)
 {
-#ifndef LSM6DSL_USE_MEM_READ_AND_WRITE
-        lsm6dsl_i2c_master_transmit_first_frame(device->port_handle, device->device_address, &reg_address, 1);
-        lsm6dsl_i2c_master_receive_last_frame(device->port_handle, device->device_address, inbuf, size);
-        // TODO: error check
+#ifdef LSM6DSL_USE_SPI
+    lsm6dsl_spi_read_mem(device->port_handle, device->device_address, reg_address, inbuf, size);
+#elsifdef LSM6DSL_USE_I2C_MEM_READ_AND_WRITE
+    lsm6dsl_i2c_master_read_mem(device->port_handle, device->device_address, reg_address, inbuf, size);
+    // TODO: error check
 #else
-        lsm6dsl_i2c_master_read_mem(device->port_handle, device->device_address, reg_address, inbuf, size);
+    lsm6dsl_i2c_master_transmit_first_frame(device->port_handle, device->device_address, &reg_address, 1);
+    lsm6dsl_i2c_master_receive_last_frame(device->port_handle, device->device_address, inbuf, size);
 #endif
 }
 
@@ -27,11 +37,13 @@ void lsm6dsl_read_register(Lsm6dsl_Device_t *device, uint8_t reg_address,
 void lsm6dsl_write_register(Lsm6dsl_Device_t *device, uint8_t reg_address,
                            uint8_t *outbuf, uint8_t size)
 {
-#ifndef LSM6DSL_USE_MEM_READ_AND_WRITE
+#ifdef LSM6DSL_USE_SPI
+    lsm6dsl_spi_write_mem(device->port_handle, device->device_address, reg_address, outbuf, size);
+#elsifdef LSM6DSL_USE_I2C_MEM_READ_AND_WRITE
+    lsm6dsl_i2c_master_write_mem(device->port_handle, device->device_address, reg_address, outbuf, size);
+#else
     lsm6dsl_i2c_master_transmit_first_frame(device->port_handle, device->device_address, &reg_address, 1);
     lsm6dsl_i2c_master_transmit_last_frame(device->port_handle, device->device_address, outbuf, size);
-#else
-        lsm6dsl_i2c_master_write_mem(device->port_handle, device->device_address, reg_address, outbuf, size);
 #endif
 }
 

@@ -16,8 +16,12 @@ extern "C"
 
 typedef struct
 {
+#ifdef USE_SPI
+    Lsm6dsl_SpiPortHandle_t *port_handle;
+#else
     Lsm6dsl_I2cPortHandle_t *port_handle;
     uint8_t                 device_address;
+#endif
 } Lsm6dsl_Device_t;
 
 
